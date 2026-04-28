@@ -1,4 +1,4 @@
-const BASE_URL = 'https://agecalculator.agecalculatormaster.com'
+const BASE_URL = 'https://age-calculater-one.vercel.app'
 
 export function generateSEO(year: string) {
   return {

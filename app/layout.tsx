@@ -6,7 +6,7 @@ import Script from 'next/script'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://agecalculator.agecalculatormaster.com'),
+  metadataBase: new URL('https://age-calculater-one.vercel.app'),
   title: {
     default: 'Age Calculator — Find Your Exact Age in Years, Months & Days',
     template: '%s | Age Calculator'
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://agecalculator.agecalculatormaster.com',
+    url: 'https://age-calculater-one.vercel.app',
     siteName: 'Age Calculator',
     title: 'Age Calculator — Find Your Exact Age Instantly',
     description: 'Calculate your exact age in years, months, weeks, days, hours and minutes. Free online tool updated daily.',
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     google: 'YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_CODE',
   },
   alternates: {
-    canonical: 'https://agecalculator.agecalculatormaster.com',
+    canonical: 'https://age-calculater-one.vercel.app',
   },
 }
 

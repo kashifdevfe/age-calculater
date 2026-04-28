@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'Age Calculator — Calculate Your Exact Age Free Online',
   description: 'Use our free age calculator to find your exact age in years, months, weeks, and days. Just enter your date of birth — instant results, no signup needed.',
   alternates: {
-    canonical: 'https://agecalculator.agecalculatormaster.com',
+    canonical: 'https://age-calculater-one.vercel.app',
   },
 }
 
@@ -32,7 +32,7 @@ export default function HomePage() {
         '@type': 'WebApplication',
         '@id': 'https://age-calculater-one.vercel.app/#app',
         name: 'Age Calculator',
-        url: 'https://agecalculator.agecalculatormaster.com',
+        url: 'https://age-calculater-one.vercel.app',
         description: 'Free online age calculator to find exact age in years, months, weeks, days.',
         applicationCategory: 'UtilitiesApplication',
         operatingSystem: 'Any',
@@ -94,7 +94,7 @@ export default function HomePage() {
             '@type': 'ListItem',
             position: 1,
             name: 'Home',
-            item: 'https://agecalculator.agecalculatormaster.com',
+            item: 'https://age-calculater-one.vercel.app',
           },
         ],
       },
