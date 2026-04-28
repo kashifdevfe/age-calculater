@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://agecalculator.agecalculatormaster.com'
+const BASE_URL = 'https://age-calculater-one.vercel.app'
 
 const months = [
   "january", "february", "march", "april", "may", "june",
