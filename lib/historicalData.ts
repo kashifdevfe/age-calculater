@@ -97,6 +97,8 @@ const decadeFacts: Record<number, HistoryFact[]> = {
   2020: [{ event: "The 2020s opened with a global pandemic and an AI revolution that changed everything.", category: 'History' }],
 }
 
+import { getYearSpecificClosing } from "./generationData"
+
 export function getHistoricalContext(year: number): string {
   // Look for an exact year match first
   const exactFacts = yearFacts[year]
@@ -121,17 +123,8 @@ export function getHistoricalContext(year: number): string {
     text += `The ${decade}s were a pivotal time — ${decadeFact[0].event} `
   }
 
-  const currentYear = new Date().getFullYear()
-  const age = currentYear - year
-
-  const closings = [
-    `Having been born in ${year}, you have witnessed ${age} years of incredible change — from technological breakthroughs to cultural milestones. `,
-    `Your ${age}-year perspective gives you a unique view of how much our society has evolved since your birth in ${year}. `,
-    `From the pre-digital era to the fully connected world of today, your ${age} years of life reflect a remarkable era of human history. `
-  ]
-
-  text += closings[year % closings.length]
-  text += `Your generation has experienced the transition from the old world to the modern, tech-driven reality we live in today. `
+  const closing = getYearSpecificClosing(year)
+  text += closing
 
   return text
 }

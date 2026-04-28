@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import AgeCalculator from '@/components/AgeCalculator'
 import FAQSection from '@/components/FAQSection'
+import { calculateAge as calculateAgeUtil } from '@/lib/ageUtils'
 import AdUnit from '@/components/AdUnit'
 import Link from 'next/link'
 
@@ -12,84 +13,92 @@ export const metadata: Metadata = {
   },
 }
 
-// JSON-LD Structured Data for Google rich results
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'WebApplication',
-      '@id': 'https://agecalculator.agecalculatormaster.com/#app',
-      name: 'Age Calculator',
-      url: 'https://agecalculator.agecalculatormaster.com',
-      description: 'Free online age calculator to find exact age in years, months, weeks, days.',
-      applicationCategory: 'UtilitiesApplication',
-      operatingSystem: 'Any',
-      offers: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'USD',
-      },
-    },
-    {
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'How do I calculate my exact age?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Enter your date of birth in the age calculator above. It will instantly show your exact age in years, months, weeks, days, hours, and minutes.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'How old am I if I was born in 2000?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: `If you were born in 2000, you are ${new Date().getFullYear() - 2001} years old in ${new Date().getFullYear()} (before your birthday) or ${new Date().getFullYear() - 2000} years old (after your birthday). Use our calculator for your exact birth date.`,
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'How many days old am I?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Use the age calculator above — it shows your exact age in days, weeks, months, and years all at once.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Is this age calculator free?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes, this age calculator is completely free to use with no signup or registration required.',
-          },
-        },
-        {
-          '@type': 'Question',
-          name: 'Can I calculate someone else\'s age?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes! You can enter any date of birth to calculate the age of anyone — a friend, family member, or even a historical figure.',
-          },
-        },
-      ],
-    },
-    {
-      '@type': 'BreadcrumbList',
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Home',
-          item: 'https://agecalculator.agecalculatormaster.com',
-        },
-      ],
-    },
-  ],
-}
-
 export default function HomePage() {
+  const currentYear = new Date().getFullYear()
+  const ageBefore = currentYear - 2001
+  const ageAfter = currentYear - 2000
+
+  // SSR Initial state for SEO visibility
+  const initialDob = '1990-01-01'
+  const initialTarget = `${currentYear}-01-01`
+  const initialAge = calculateAgeUtil(new Date(initialDob), new Date(initialTarget))
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebApplication',
+        '@id': 'https://agecalculator.agecalculatormaster.com/#app',
+        name: 'Age Calculator',
+        url: 'https://agecalculator.agecalculatormaster.com',
+        description: 'Free online age calculator to find exact age in years, months, weeks, days.',
+        applicationCategory: 'UtilitiesApplication',
+        operatingSystem: 'Any',
+        offers: {
+          '@type': 'Offer',
+          price: '0',
+          priceCurrency: 'USD',
+        },
+      },
+      {
+        '@type': 'FAQPage',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'How do I calculate my exact age?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Enter your date of birth in the age calculator above. It will instantly show your exact age in years, months, weeks, days, hours, and minutes.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'How old am I if I was born in 2000?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: `If you were born in 2000, you are ${ageBefore} years old in ${currentYear} (before your birthday) or ${ageAfter} years old (after your birthday). Use our calculator for your exact birth date.`,
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'How many days old am I?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Use the age calculator above — it shows your exact age in days, weeks, months, and years all at once.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Is this age calculator free?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Yes, this age calculator is completely free to use with no signup or registration required.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Can I calculate someone else\'s age?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Yes! You can enter any date of birth to calculate the age of anyone — a friend, family member, or even a historical figure.',
+            },
+          },
+        ],
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://agecalculator.agecalculatormaster.com',
+          },
+        ],
+      },
+    ],
+  }
+
   return (
     <>
       {/* JSON-LD Structured Data */}
@@ -120,7 +129,7 @@ export default function HomePage() {
           />
 
           {/* Main Calculator */}
-          <AgeCalculator />
+          <AgeCalculator initialResult={initialAge} initialDob={initialDob} initialTarget={initialTarget} />
 
           {/* Ad Unit — After result (peak attention moment) */}
           <AdUnit

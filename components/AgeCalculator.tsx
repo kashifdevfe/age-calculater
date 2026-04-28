@@ -4,20 +4,28 @@ import { useState, useEffect } from 'react'
 import { calculateAge, type AgeResult } from '@/lib/ageUtils'
 import ResultDisplay from './ResultDisplay'
 
-export default function AgeCalculator() {
+export default function AgeCalculator({ 
+  initialResult, 
+  initialDob, 
+  initialTarget 
+}: { 
+  initialResult?: AgeResult | null;
+  initialDob?: string;
+  initialTarget?: string;
+}) {
   const [mounted, setMounted] = useState(false)
-  const [dob, setDob] = useState('')
-  const [targetDate, setTargetDate] = useState('')
-  const [result, setResult] = useState<AgeResult | null>(null)
+  const [dob, setDob] = useState(initialDob || '')
+  const [targetDate, setTargetDate] = useState(initialTarget || '')
+  const [result, setResult] = useState<AgeResult | null>(initialResult || null)
   const [error, setError] = useState('')
 
   useEffect(() => {
     setMounted(true)
-    setTargetDate(new Date().toISOString().split('T')[0])
+    const todayStr = new Date().toISOString().split('T')[0]
+    setTargetDate(prev => prev || todayStr)
   }, [])
 
-  // Remove the !mounted check to allow search engines to see the form
-  const today = mounted ? new Date().toISOString().split('T')[0] : ''
+  const today = mounted ? new Date().toISOString().split('T')[0] : '2026-12-31'
 
   function handleCalculate() {
     if (!dob) {
