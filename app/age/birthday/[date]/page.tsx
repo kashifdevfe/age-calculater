@@ -31,13 +31,13 @@ export async function generateMetadata({ params }: { params: { date: string } })
     openGraph: {
       title,
       description,
-      url: `https://agecalculator.agecalculatormaster.com/age/birthday/${date}`,
+      url: `https://age-calculater-one.vercel.app/age/birthday/${date}`,
     },
     twitter: {
       title,
       description,
     },
-    alternates: { canonical: `https://agecalculator.agecalculatormaster.com/age/birthday/${date}` },
+    alternates: { canonical: `https://age-calculater-one.vercel.app/age/birthday/${date}` },
   }
 }
 

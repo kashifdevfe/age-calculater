@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: { params: { year: string } })
     openGraph: {
       title,
       description,
-      url: `https://agecalculator.agecalculatormaster.com/age/${year}`,
+      url: `https://age-calculater-one.vercel.app/age/${year}`,
       siteName: 'Age Calculator',
       type: 'website',
     },
@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: { params: { year: string } })
       title,
       description,
     },
-    alternates: { canonical: `https://agecalculator.agecalculatormaster.com/age/${year}` },
+    alternates: { canonical: `https://age-calculater-one.vercel.app/age/${year}` },
   }
 }
 

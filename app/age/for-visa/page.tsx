@@ -5,7 +5,7 @@ import AdUnit from '@/components/AdUnit'
 export const metadata: Metadata = {
   title: 'Age Calculator for Visa Application – Minimum Age Requirements',
   description: 'Check if you meet the minimum age requirement for your visa application. Calculate your exact age and compare against visa age rules for popular countries.',
-  alternates: { canonical: 'https://agecalculator.agecalculatormaster.com/age/for-visa' },
+  alternates: { canonical: 'https://age-calculater-one.vercel.app/age/for-visa' },
   robots: { index: true, follow: true },
 }
 

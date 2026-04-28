@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: { params: { year: string } })
     openGraph: {
       title,
       description,
-      url: `https://agecalculator.agecalculatormaster.com/age/decade/${start}`,
+      url: `https://age-calculater-one.vercel.app/age/decade/${start}`,
       siteName: 'Age Calculator',
       type: 'website',
     },
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: { params: { year: string } })
       title,
       description,
     },
-    alternates: { canonical: `https://agecalculator.agecalculatormaster.com/age/decade/${start}` },
+    alternates: { canonical: `https://age-calculater-one.vercel.app/age/decade/${start}` },
     robots: { index: true, follow: true },
   }
 }

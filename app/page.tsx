@@ -30,7 +30,7 @@ export default function HomePage() {
     '@graph': [
       {
         '@type': 'WebApplication',
-        '@id': 'https://agecalculator.agecalculatormaster.com/#app',
+        '@id': 'https://age-calculater-one.vercel.app/#app',
         name: 'Age Calculator',
         url: 'https://agecalculator.agecalculatormaster.com',
         description: 'Free online age calculator to find exact age in years, months, weeks, days.',

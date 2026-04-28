@@ -5,7 +5,7 @@ import AdUnit from '@/components/AdUnit'
 export const metadata: Metadata = {
   title: 'How Many Days Old Am I? – Day Age Calculator',
   description: 'Find out exactly how many days old you are. Enter your date of birth to calculate your total age in days, weeks, months, and years instantly.',
-  alternates: { canonical: 'https://agecalculator.agecalculatormaster.com/age/in-days' },
+  alternates: { canonical: 'https://age-calculater-one.vercel.app/age/in-days' },
   robots: { index: true, follow: true },
 }
 

@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://agecalculator.agecalculatormaster.com/sitemap.xml',
+    sitemap: 'https://age-calculater-one.vercel.app/sitemap.xml',
   }
 }
