@@ -67,7 +67,7 @@ export function calculateAge(dob: Date, targetDate: Date): AgeResult {
   }
 }
 
-function getZodiacSign(month: number, day: number): string {
+export function getZodiacSign(month: number, day: number): string {
   if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) return 'Aries ♈'
   if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) return 'Taurus ♉'
   if ((month === 5 && day >= 21) || (month === 6 && day <= 20)) return 'Gemini ♊'

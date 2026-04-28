@@ -27,9 +27,24 @@ export const revalidate = 86400 // ISR (24 hours)
 export async function generateMetadata({ params }: { params: { year: string } }) {
   const { year } = await params
   const currentYear = new Date().getFullYear()
+  const title = `Born in ${year}? Find Your Exact Age in ${currentYear}`
+  const description = `Born in ${year}? Find out exactly how old you are in ${currentYear} — in years, months, days, hours, heartbeats and more. Instant free calculator.`
+  
   return {
-    title: `Born in ${year}? Find Your Exact Age in ${currentYear}`,
-    description: `Born in ${year}? Find out exactly how old you are in ${currentYear} — in years, months, days, hours, heartbeats and more. Instant free calculator.`,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: `https://agecalculator.agecalculatormaster.com/age/${year}`,
+      siteName: 'Age Calculator',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
     alternates: { canonical: `https://agecalculator.agecalculatormaster.com/age/${year}` },
   }
 }

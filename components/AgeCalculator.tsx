@@ -16,9 +16,8 @@ export default function AgeCalculator() {
     setTargetDate(new Date().toISOString().split('T')[0])
   }, [])
 
-  if (!mounted) return <div className="calculator-card"><p>Loading calculator...</p></div>
-
-  const today = new Date().toISOString().split('T')[0]
+  // Remove the !mounted check to allow search engines to see the form
+  const today = mounted ? new Date().toISOString().split('T')[0] : ''
 
   function handleCalculate() {
     if (!dob) {

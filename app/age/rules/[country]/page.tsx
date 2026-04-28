@@ -105,15 +105,29 @@ export default async function Page({ params }: { params: { country: string } }) 
         <p>
           The official retirement age in {data.name} is currently <strong>{data.retirement}</strong>. 
           This is the age at which citizens typically become eligible for full state pension benefits 
-          or social security. Planning for retirement around this milestone is a key part of financial 
-          stability in later life.
+          or social security. However, many people choose to continue working beyond this age or opt 
+          for early retirement if they have private pension arrangements. It is important to check 
+          the specific contribution requirements for your local pension system to ensure you're 
+          fully covered when you reach this milestone.
         </p>
 
         <h3 style={{ marginTop: '1.5rem' }}>Youth & Independence</h3>
         <p>
           Young people in {data.name} gain independence in stages. The ability to operate a motor 
-          vehicle begins at <strong>{data.driving}</strong>, followed by the right to vote and 
-          participate in elections at <strong>{data.voting}</strong>.
+          vehicle begins at <strong>{data.driving}</strong>, although this often comes with 
+          provisional licensing requirements and strict supervision rules for the first year of 
+          driving. The right to vote and participate in democratic elections is granted at 
+          <strong>{data.voting}</strong>, marking the official transition into full legal adulthood 
+          in most jurisdictions.
+        </p>
+
+        <h3 style={{ marginTop: '1.5rem' }}>Drinking & Social Laws</h3>
+        <p>
+          The legal age for purchasing and consuming alcohol in {data.name} is <strong>{data.drinking}</strong>. 
+          These laws are strictly enforced to promote public safety and health. It is worth noting 
+          that in some regions, there may be specific exceptions for private consumption or 
+          different age limits for beer and wine versus spirits, though the general legal limit 
+          remains the primary benchmark for businesses and law enforcement.
         </p>
       </section>
 
@@ -136,7 +150,7 @@ export default async function Page({ params }: { params: { country: string } }) 
       </div>
 
       <footer style={{ padding: '2rem 1rem', borderTop: '1px solid #e5e7eb', textAlign: 'center', color: '#6b7280', fontSize: '0.875rem' }}>
-        <p>© {new Date().getFullYear()} Age Calculator — International Age Rules</p>
+        <p>© {new Date().getFullYear()} Age Calculator — Free Online Tool</p>
         <p style={{ marginTop: '0.75rem' }}>
           <Link href="/privacy" style={{ color: '#00ADB5', marginRight: '1.5rem', fontWeight: 500, textDecoration: 'none' }}>Privacy Policy</Link>
           <Link href="/terms" style={{ color: '#00ADB5', fontWeight: 500, textDecoration: 'none' }}>Terms of Use</Link>

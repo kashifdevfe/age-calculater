@@ -5,7 +5,7 @@ const faqs = [
   },
   {
     q: 'How old am I if I was born in 2000?',
-    a: `If born in 2000, you are ${new Date().getFullYear() - 1 - 2000} years old in ${new Date().getFullYear()} (before birthday) or ${new Date().getFullYear() - 2000} (after). Use the calculator above for your exact date.`,
+    a: `If born in 2000, you are ${new Date().getFullYear() - 2001} years old in ${new Date().getFullYear()} (before birthday) or ${new Date().getFullYear() - 2000} (after). Use the calculator above for your exact date.`,
   },
   {
     q: 'How many days old am I?',

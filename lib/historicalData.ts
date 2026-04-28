@@ -103,7 +103,14 @@ export function getHistoricalContext(year: number): string {
   const decade = Math.floor(year / 10) * 10
   const decadeFact = decadeFacts[decade] || []
 
-  let text = `People born in ${year} have lived through some of history's most transformative events. `
+  const intros = [
+    `People born in ${year} have lived through some of history's most transformative events. `,
+    `For those whose journey began in ${year}, the world has undergone incredible shifts in technology and culture. `,
+    `Being born in ${year} means your life story spans a period of unprecedented global change. `,
+    `The world of ${year} was the starting point for a generation that would witness the digital revolution first-hand. `
+  ]
+
+  let text = intros[year % intros.length]
 
   if (exactFacts && exactFacts.length > 0) {
     text += `In ${year} itself, the world saw major events: ${exactFacts[0].event} `
@@ -116,8 +123,15 @@ export function getHistoricalContext(year: number): string {
 
   const currentYear = new Date().getFullYear()
   const age = currentYear - year
-  text += `Having been born in ${year}, you have witnessed ${age} years of incredible change — from technological breakthroughs to cultural milestones. `
-  text += `Your generation has experienced the transition from the pre-digital to the fully connected world we live in today. `
+
+  const closings = [
+    `Having been born in ${year}, you have witnessed ${age} years of incredible change — from technological breakthroughs to cultural milestones. `,
+    `Your ${age}-year perspective gives you a unique view of how much our society has evolved since your birth in ${year}. `,
+    `From the pre-digital era to the fully connected world of today, your ${age} years of life reflect a remarkable era of human history. `
+  ]
+
+  text += closings[year % closings.length]
+  text += `Your generation has experienced the transition from the old world to the modern, tech-driven reality we live in today. `
 
   return text
 }

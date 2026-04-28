@@ -24,9 +24,24 @@ const decadeThemes: Record<number, string> = {
 export async function generateMetadata({ params }: { params: { year: string } }) {
   const { year } = await params
   const start = Math.floor(Number(year) / 10) * 10
+  const title = `Age Comparison for the ${start}s Decade – Birth Year Guide`;
+  const description = `Find your age if you were born in the ${start}s. Complete guide to birth years from ${start} to ${start + 9} with historical context.`;
+  
   return {
-    title: `Age Comparison for the ${start}s Decade – Birth Year Guide`,
-    description: `Find your age if you were born in the ${start}s. Complete guide to birth years from ${start} to ${start + 9} with historical context.`,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: `https://agecalculator.agecalculatormaster.com/age/decade/${start}`,
+      siteName: 'Age Calculator',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+    },
     alternates: { canonical: `https://agecalculator.agecalculatormaster.com/age/decade/${start}` },
     robots: { index: true, follow: true },
   }
