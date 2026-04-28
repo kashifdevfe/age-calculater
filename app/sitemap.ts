@@ -2,6 +2,7 @@ import { MetadataRoute } from 'next'
 
 const BASE_URL = 'https://age-calculater-one.vercel.app'
 
+
 const months = [
   "january", "february", "march", "april", "may", "june",
   "july", "august", "september", "october", "november", "december"
