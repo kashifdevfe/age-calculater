@@ -5,6 +5,7 @@ import AdUnit from "@/components/AdUnit"
 import Link from 'next/link'
 import Breadcrumbs from "@/components/Breadcrumbs"
 import { getHistoricalContext } from "@/lib/historicalData"
+import { getUniqueIntro, getUniqueFact, getUniqueComparison } from "@/lib/pSEOEngine"
 
 function HowToSchema({ year, age }: { year: number; age: { years: number; currentYear: number } }) {
   const data = {
@@ -59,7 +60,12 @@ export default async function Page({ params }: { params: { year: string } }) {
 
   const age = calculateAge(year)
   const historicalText = getHistoricalContext(year)
+  const decadeStart = Math.floor(year / 10) * 10
   const adjacentYears = [year - 5, year - 1, year + 1, year + 5].filter(y => y >= 1900 && y <= new Date().getFullYear())
+
+  const intro = getUniqueIntro(year, age.years)
+  const uniqueFact = getUniqueFact(year, historicalText)
+  const comparison = getUniqueComparison(year, age.years, age)
 
   return (
     <main style={{ padding: "0 1rem", maxWidth: "800px", margin: "auto" }}>
@@ -67,7 +73,10 @@ export default async function Page({ params }: { params: { year: string } }) {
       <HowToSchema year={year} age={age} />
       
       <header style={{ background: '#ffffff', color: '#00ADB5', padding: '2rem 1rem', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <Breadcrumbs items={[{ name: `Born in ${year}`, path: `/age/${year}` }]} />
+        <Breadcrumbs items={[
+          { name: `The ${decadeStart}s`, path: `/age/decade/${decadeStart}` },
+          { name: `Born in ${year}`, path: `/age/${year}` }
+        ]} />
         <Link href="/" style={{ textDecoration: 'none', color: 'inherit', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
           <img src="/logo.png" alt="Age Calculator Logo" style={{ width: '56px', height: '56px', marginBottom: '0.75rem' }} />
           <h1 style={{ fontSize: '2.5rem', fontWeight: 800, margin: 0, letterSpacing: '-0.025em' }}>
@@ -77,31 +86,57 @@ export default async function Page({ params }: { params: { year: string } }) {
       </header>
 
       <div className="calculator-card" style={{ textAlign: 'center' }}>
-        <p style={{ fontSize: '1.25rem', marginBottom: '1.5rem' }}>
-          If you were born in <strong>{year}</strong>, you are currently:
+        <p style={{ fontSize: '1.25rem', marginBottom: '1.5rem', color: '#4b5563' }}>
+          {intro}
         </p>
         
         <div className="age-main" style={{ justifyContent: 'center', marginBottom: '2rem' }}>
-          <span className="age-num" style={{ fontSize: '4rem' }}>{age.years}</span>
+          <span className="age-num" style={{ fontSize: '5rem' }}>{age.years}</span>
           <span className="age-label" style={{ fontSize: '1.5rem' }}>years old</span>
         </div>
 
         <div className="stats-grid">
           <div className="stat-card">
             <div className="stat-val">{age.months.toLocaleString()}</div>
-            <div className="stat-lbl">Months Old</div>
+            <div className="stat-lbl">Months</div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-val">{age.weeks.toLocaleString()}</div>
+            <div className="stat-lbl">Weeks</div>
           </div>
           <div className="stat-card">
             <div className="stat-val">{age.days.toLocaleString()}</div>
-            <div className="stat-lbl">Days Old (approx)</div>
+            <div className="stat-lbl">Days</div>
           </div>
           <div className="stat-card">
             <div className="stat-val">{age.currentYear}</div>
             <div className="stat-lbl">Current Year</div>
           </div>
-          <div className="stat-card">
-            <div className="stat-val">{year}</div>
-            <div className="stat-lbl">Born Year</div>
+        </div>
+
+        {/* New: High-Precision Precision Table */}
+        <div style={{ marginTop: '2.5rem', padding: '1.5rem', background: '#f9fafb', borderRadius: '12px', textAlign: 'left' }}>
+          <h3 style={{ margin: '0 0 1rem', fontSize: '1.1rem', color: '#1f2937' }}>Your Life in Numbers</h3>
+          <p style={{ fontSize: '0.95rem', color: '#4b5563', marginBottom: '1rem' }}>
+            {comparison}
+          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
+             <div>
+               <div style={{ fontSize: '0.8rem', color: '#6b7280', textTransform: 'uppercase' }}>Precision Days</div>
+               <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#00ADB5' }}>{age.days.toLocaleString()}</div>
+             </div>
+             <div>
+               <div style={{ fontSize: '0.8rem', color: '#6b7280', textTransform: 'uppercase' }}>Approx. Heartbeats</div>
+               <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#00ADB5' }}>{age.heartBeats.toLocaleString()}</div>
+             </div>
+             <div>
+               <div style={{ fontSize: '0.8rem', color: '#6b7280', textTransform: 'uppercase' }}>Approx. Breaths</div>
+               <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#00ADB5' }}>{age.breathsTotal.toLocaleString()}</div>
+             </div>
+             <div>
+               <div style={{ fontSize: '0.8rem', color: '#6b7280', textTransform: 'uppercase' }}>Total Seconds</div>
+               <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#00ADB5' }}>{age.seconds.toLocaleString()}</div>
+             </div>
           </div>
         </div>
       </div>
@@ -113,20 +148,10 @@ export default async function Page({ params }: { params: { year: string } }) {
         style={{ margin: '1.5rem auto', display: 'block', maxWidth: '336px' }}
       />
 
-      <section style={{ margin: '2rem 0', lineHeight: 1.7 }}>
-        <h2>Historical Context: Being Born in {year}</h2>
-        <p>{historicalText}</p>
-
-        <h3 style={{ marginTop: '1.5rem' }}>How is your age calculated?</h3>
+      <section style={{ margin: '2rem 0', lineHeight: 1.8 }}>
+        <h2>The World in {year}</h2>
         <p>
-          Calculating your exact age when born in {year} is a simple process of subtraction. 
-          By taking the current year ({age.currentYear}) and subtracting your birth year ({year}), 
-          we find that you are {age.years} years old.
-        </p>
-        <p>
-          To give you a better perspective, we've also converted that into months and days. 
-          Assuming an average year length of 365.25 days (to account for leap years), a person 
-          born in {year} has lived approximately {age.days.toLocaleString()} days!
+          {uniqueFact}
         </p>
       </section>
 

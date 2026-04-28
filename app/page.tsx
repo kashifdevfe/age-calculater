@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: 'Age Calculator — Calculate Your Exact Age Free Online',
   description: 'Use our free age calculator to find your exact age in years, months, weeks, and days. Just enter your date of birth — instant results, no signup needed.',
   alternates: {
-    canonical: 'https://agecalculator.example.com',
+    canonical: 'https://agecalculator.agecalculatormaster.com',
   },
 }
 
@@ -18,9 +18,9 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'WebApplication',
-      '@id': 'https://agecalculator.example.com/#app',
+      '@id': 'https://agecalculator.agecalculatormaster.com/#app',
       name: 'Age Calculator',
-      url: 'https://agecalculator.example.com',
+      url: 'https://agecalculator.agecalculatormaster.com',
       description: 'Free online age calculator to find exact age in years, months, weeks, days.',
       applicationCategory: 'UtilitiesApplication',
       operatingSystem: 'Any',
@@ -82,7 +82,7 @@ const jsonLd = {
           '@type': 'ListItem',
           position: 1,
           name: 'Home',
-          item: 'https://agecalculator.example.com',
+          item: 'https://agecalculator.agecalculatormaster.com',
         },
       ],
     },
@@ -215,6 +215,51 @@ export default function HomePage() {
               </Link>
               <Link href="/age/in-months" className="year-link" style={{ padding: '1rem', background: '#ffffff', border: '1px solid #e5e7eb', borderRadius: '8px', textAlign: 'center', textDecoration: 'none', color: '#00ADB5', fontWeight: 600 }}>
                 Calculate Age in Months
+              </Link>
+            </div>
+          </section>
+
+          {/* New pSEO Sections: Browse by Decade */}
+          <section style={{ margin: '2rem 0' }}>
+            <h2>Browse Birth Years by Decade</h2>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '1rem' }}>
+              {[1950, 1960, 1970, 1980, 1990, 2000, 2010, 2020].map((d) => (
+                <Link 
+                  key={d} 
+                  href={`/age/decade/${d}`}
+                  className="year-link"
+                  style={{ 
+                    padding: '0.75rem 1.25rem', 
+                    background: '#f3f4f6', 
+                    borderRadius: '25px', 
+                    textAlign: 'center', 
+                    textDecoration: 'none', 
+                    color: '#4b5563',
+                    fontWeight: 600,
+                    fontSize: '1rem'
+                  }}
+                >
+                  The {d}s
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          {/* New pSEO Sections: Pet Age & International Rules */}
+          <section style={{ margin: '2rem 0' }}>
+            <h2>Pet Age & Global Rules</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '1rem', marginTop: '1rem' }}>
+              <Link href="/age/pet/dog/1" className="year-link" style={{ padding: '1rem', background: '#ffffff', border: '1px solid #e5e7eb', borderRadius: '8px', textAlign: 'center', textDecoration: 'none', color: '#00ADB5', fontWeight: 600 }}>
+                Dog to Human Years
+              </Link>
+              <Link href="/age/pet/cat/1" className="year-link" style={{ padding: '1rem', background: '#ffffff', border: '1px solid #e5e7eb', borderRadius: '8px', textAlign: 'center', textDecoration: 'none', color: '#00ADB5', fontWeight: 600 }}>
+                Cat to Human Years
+              </Link>
+              <Link href="/age/rules/usa" className="year-link" style={{ padding: '1rem', background: '#ffffff', border: '1px solid #e5e7eb', borderRadius: '8px', textAlign: 'center', textDecoration: 'none', color: '#00ADB5', fontWeight: 600 }}>
+                USA Legal Age Rules
+              </Link>
+              <Link href="/age/rules/uk" className="year-link" style={{ padding: '1rem', background: '#ffffff', border: '1px solid #e5e7eb', borderRadius: '8px', textAlign: 'center', textDecoration: 'none', color: '#00ADB5', fontWeight: 600 }}>
+                UK Age Milestones
               </Link>
             </div>
           </section>

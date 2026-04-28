@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return {
     title: `Age Difference Between ${y1} and ${y2} – How Many Years Apart?`,
     description: `Calculate the age difference between someone born in ${y1} vs ${y2}. They are ${Math.abs(Number(y2) - Number(y1))} years apart. See months and days difference.`,
-    alternates: { canonical: `https://agecalculator.example.com/age/difference/${slug}` },
+    alternates: { canonical: `https://agecalculator.agecalculatormaster.com/age/difference/${slug}` },
     robots: { index: true, follow: true },
   }
 }

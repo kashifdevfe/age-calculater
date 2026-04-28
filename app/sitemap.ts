@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://agecalculator.example.com'
+const BASE_URL = 'https://agecalculator.agecalculatormaster.com'
 
 const months = [
   "january", "february", "march", "april", "may", "june",
@@ -61,10 +61,49 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // ── /age/rules/[country] routes (9 pages) ───────────────────
+  const ruleRoutes: MetadataRoute.Sitemap = Object.keys(countryData).map(country => ({
+    url: `${BASE_URL}/age/rules/${country}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.6,
+  }))
+
+  // ── /age/pet/[animal]/[years] routes (40 pages) ──────────────
+  const petRoutes: MetadataRoute.Sitemap = []
+  const animals = ['dog', 'cat']
+  for (const animal of animals) {
+    for (let y = 1; y <= 20; y++) {
+      petRoutes.push({
+        url: `${BASE_URL}/age/pet/${animal}/${y}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly',
+        priority: 0.5,
+      })
+    }
+  }
+
+  // ── /age/decade/[year] routes (13 pages) ───────────────────
+  const decadeRoutes: MetadataRoute.Sitemap = []
+  for (let y = 1900; y <= 2020; y += 10) {
+    decadeRoutes.push({
+      url: `${BASE_URL}/age/decade/${y}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    })
+  }
+
   return [
     ...staticRoutes,
     ...yearRoutes,
     ...birthdayRoutes,
     ...differenceRoutes,
+    ...ruleRoutes,
+    ...petRoutes,
+    ...decadeRoutes,
   ]
 }
+
+const countryData = ['usa', 'uk', 'canada', 'australia', 'india', 'uae', 'germany', 'france', 'japan']
+

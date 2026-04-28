@@ -9,13 +9,13 @@ export default function Breadcrumbs({ items }: { items: { name: string, path: st
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://agecalculator.example.com"
+        "item": "https://agecalculator.agecalculatormaster.com"
       },
       ...items.map((item, index) => ({
         "@type": "ListItem",
         "position": index + 2,
         "name": item.name,
-        "item": `https://agecalculator.example.com${item.path}`
+        "item": `https://agecalculator.agecalculatormaster.com${item.path}`
       }))
     ]
   };

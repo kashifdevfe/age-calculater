@@ -44,7 +44,7 @@ export default function PrivacyPage() {
 
         <section style={{ margin: '2rem 0' }}>
           <h2>5. Contact Us</h2>
-          <p>If you have any questions about this Privacy Policy, please contact us at support@yourdomain.com.</p>
+          <p>If you have any questions about this Privacy Policy, please contact us at support@agecalculatormaster.com.</p>
         </section>
 
         <div style={{ textAlign: 'center', margin: '3rem 0' }}>

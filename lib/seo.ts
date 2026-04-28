@@ -1,4 +1,4 @@
-const BASE_URL = 'https://agecalculator.example.com'
+const BASE_URL = 'https://agecalculator.agecalculatormaster.com'
 
 export function generateSEO(year: string) {
   return {

@@ -5,7 +5,7 @@ import AdUnit from '@/components/AdUnit'
 export const metadata: Metadata = {
   title: 'How Old Am I in Months? – Age in Months Calculator',
   description: 'Calculate your exact age in months, weeks, and days. Enter your date of birth to find out how many months old you are — instantly and for free.',
-  alternates: { canonical: 'https://agecalculator.example.com/age/in-months' },
+  alternates: { canonical: 'https://agecalculator.agecalculatormaster.com/age/in-months' },
   robots: { index: true, follow: true },
 }
 
