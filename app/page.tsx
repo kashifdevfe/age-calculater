@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   },
 }
 
+export const dynamic = 'force-dynamic'
+
 export default function HomePage() {
   const currentYear = new Date().getFullYear()
   const ageBefore = currentYear - 2001
@@ -56,7 +58,7 @@ export default function HomePage() {
             name: 'How old am I if I was born in 2000?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: `If you were born in 2000, you are ${ageBefore} years old in ${currentYear} (before your birthday) or ${ageAfter} years old (after your birthday). Use our calculator for your exact birth date.`,
+              text: `If you were born in 2000, you will be ${currentYear - 2000} years old in ${currentYear}. Use our calculator for your exact birth date including months and days.`,
             },
           },
           {

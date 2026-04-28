@@ -106,10 +106,10 @@ export function getHistoricalContext(year: number): string {
   const decadeFact = decadeFacts[decade] || []
 
   const intros = [
-    `People born in ${year} have lived through some of history's most transformative events. `,
-    `For those whose journey began in ${year}, the world has undergone incredible shifts in technology and culture. `,
-    `Being born in ${year} means your life story spans a period of unprecedented global change. `,
-    `The world of ${year} was the starting point for a generation that would witness the digital revolution first-hand. `
+    `The world has undergone incredible shifts in technology and culture since this era began. `,
+    `It is fascinating to look back and see how much global society has transformed over these years. `,
+    `This period marked the beginning of a life story that spans some of history's most pivotal moments. `,
+    `Starting a journey during this time meant witnessing the digital revolution from its very inception. `
   ]
 
   let text = intros[year % intros.length]

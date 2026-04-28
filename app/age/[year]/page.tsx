@@ -85,7 +85,7 @@ export default async function Page({ params }: { params: { year: string } }) {
 
   const intro = getUniqueIntro(year, age.years)
   const leadIn = getUniqueFact(year)
-  const fullHistory = `${leadIn.trim().endsWith('.') ? leadIn.trim() : leadIn.trim() + '.'} ${historicalText.trim()}`
+  const fullHistory = leadIn.trim() + " " + historicalText.trim()
   const comparison = getUniqueComparison(year, age.years, age)
 
   return (

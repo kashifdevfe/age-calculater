@@ -13,11 +13,11 @@ const introTemplates = [
 ]
 
 const factTemplates = [
-  "A key highlight of {year} was the emergence of significant global changes that impacted everyone born that year.",
-  "Interestingly, the world was undergoing a major transformation when you arrived in {year}.",
-  "Historical records from {year} show a vibrant and rapidly evolving global landscape for your birth year.",
-  "The cultural zeitgeist of {year} was shaped by numerous historic breakthroughs and milestones.",
-  "One of the most defining characteristics of {year} was the spirit of progress and innovation."
+  "A key highlight of that period was the emergence of significant global changes that impacted everyone born during that time.",
+  "Interestingly, the world was undergoing a major transformation throughout those years.",
+  "Historical records from that era show a vibrant and rapidly evolving global landscape.",
+  "The cultural zeitgeist of the time was shaped by numerous historic breakthroughs and milestones.",
+  "One of the most defining characteristics of the age was the spirit of progress and innovation."
 ]
 
 const comparisonTemplates = [

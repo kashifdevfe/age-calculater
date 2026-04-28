@@ -10,7 +10,7 @@ export default function FAQSection() {
     },
     {
       q: 'How old am I if I was born in 2000?',
-      a: `If born in 2000, you are ${ageBefore} years old in ${currentYear} (before birthday) or ${ageAfter} (after). Use the calculator above for your exact date.`,
+      a: `If you were born in 2000, you will turn ${currentYear - 2000} years old in ${currentYear}. You are currently ${currentYear - 2001} or ${currentYear - 2000} depending on if your birthday has passed.`,
     },
     {
       q: 'How many days old am I?',
