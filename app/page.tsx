@@ -46,7 +46,7 @@ const jsonLd = {
           name: 'How old am I if I was born in 2000?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'If you were born in 2000, you are 25 years old in 2025 (before your birthday) or 26 years old (after your birthday). Use the calculator above for your exact date.',
+            text: `If you were born in 2000, you are ${new Date().getFullYear() - 1 - 2000} years old in ${new Date().getFullYear()} (before your birthday) or ${new Date().getFullYear() - 2000} years old (after your birthday). Use the calculator above for your exact date.`,
           },
         },
         {

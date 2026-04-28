@@ -97,7 +97,7 @@ export default async function Page({ params }: { params: { date: string } }) {
       </div>
 
       <footer style={{ padding: '2rem 1rem', borderTop: '1px solid #e5e7eb', textAlign: 'center', color: '#6b7280', fontSize: '0.875rem' }}>
-        <p>© {new Date().getFullYear()} Age Calculator — programmatic SEO Page</p>
+        <p>© {new Date().getFullYear()} Age Calculator — Free Online Tool</p>
         <p style={{ marginTop: '0.75rem' }}>
           <Link href="/privacy" style={{ color: '#00ADB5', marginRight: '1.5rem', fontWeight: 500, textDecoration: 'none' }}>Privacy Policy</Link>
           <Link href="/terms" style={{ color: '#00ADB5', fontWeight: 500, textDecoration: 'none' }}>Terms of Use</Link>

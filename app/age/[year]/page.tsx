@@ -26,7 +26,12 @@ export const revalidate = 86400 // ISR (24 hours)
 
 export async function generateMetadata({ params }: { params: { year: string } }) {
   const { year } = await params
-  return generateSEO(year)
+  const currentYear = new Date().getFullYear()
+  return {
+    title: `Born in ${year}? Find Your Exact Age in ${currentYear}`,
+    description: `Born in ${year}? Find out exactly how old you are in ${currentYear} — in years, months, days, hours, heartbeats and more. Instant free calculator.`,
+    alternates: { canonical: `https://agecalculator.agecalculatormaster.com/age/${year}` },
+  }
 }
 
 export async function generateStaticParams() {
@@ -64,7 +69,8 @@ export default async function Page({ params }: { params: { year: string } }) {
   const adjacentYears = [year - 5, year - 1, year + 1, year + 5].filter(y => y >= 1900 && y <= new Date().getFullYear())
 
   const intro = getUniqueIntro(year, age.years)
-  const uniqueFact = getUniqueFact(year, historicalText)
+  const leadIn = getUniqueFact(year)
+  const fullHistory = `${leadIn.trim().endsWith('.') ? leadIn.trim() : leadIn.trim() + '.'} ${historicalText.trim()}`
   const comparison = getUniqueComparison(year, age.years, age)
 
   return (
@@ -151,7 +157,7 @@ export default async function Page({ params }: { params: { year: string } }) {
       <section style={{ margin: '2rem 0', lineHeight: 1.8 }}>
         <h2>The World in {year}</h2>
         <p>
-          {uniqueFact}
+          {fullHistory}
         </p>
       </section>
 
@@ -177,7 +183,7 @@ export default async function Page({ params }: { params: { year: string } }) {
       </div>
 
       <footer style={{ padding: '2rem 1rem', borderTop: '1px solid #e5e7eb', textAlign: 'center', color: '#6b7280', fontSize: '0.875rem' }}>
-        <p>© {new Date().getFullYear()} Age Calculator — programmatic SEO Page</p>
+        <p>© {new Date().getFullYear()} Age Calculator — Free Online Tool</p>
         <p style={{ marginTop: '0.75rem' }}>
           <Link href="/privacy" style={{ color: '#00ADB5', marginRight: '1.5rem', fontWeight: 500, textDecoration: 'none' }}>Privacy Policy</Link>
           <Link href="/terms" style={{ color: '#00ADB5', fontWeight: 500, textDecoration: 'none' }}>Terms of Use</Link>

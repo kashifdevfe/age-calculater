@@ -1,6 +1,7 @@
 import AdUnit from "@/components/AdUnit"
 import Breadcrumbs from "@/components/Breadcrumbs"
 import Link from 'next/link'
+import { decadeData } from "@/lib/decadeData"
 
 export const revalidate = 86400
 
@@ -43,6 +44,11 @@ export default async function Page({ params }: { params: { year: string } }) {
   const { year } = await params
   const start = Math.floor(Number(year) / 10) * 10
   const theme = decadeThemes[start] || "A significant period of human history and cultural development."
+  const decadeInfo = decadeData[start] || {
+    ageRange: "various",
+    context: "A significant period of human history and cultural development.",
+    generation: "multiple generations"
+  }
   
   const yearsInDecade = Array.from({ length: 10 }, (_, i) => start + i).filter(y => y <= new Date().getFullYear())
 
@@ -82,12 +88,18 @@ export default async function Page({ params }: { params: { year: string } }) {
 
         <AdUnit slot="XXXXXXXXXX" format="rectangle" style={{ margin: '1.5rem auto', display: 'block', maxWidth: '336px' }} />
 
-        <section style={{ margin: '2rem 0', lineHeight: 1.8 }}>
-          <h2>The Legacy of the {start}s</h2>
+        <section style={{ margin: '2rem 0', lineHeight: 1.8, background: '#f8fafc', padding: '2rem', borderRadius: '16px', border: '1px solid #e2e8f0' }}>
+          <h2 style={{ color: '#1e293b', marginTop: 0 }}>The Legacy of the {start}s</h2>
+          <p style={{ fontSize: '1.1rem', color: '#334155', fontWeight: 500 }}>
+            As of {new Date().getFullYear()}, individuals born in the {start}s are currently {decadeInfo.ageRange}.
+          </p>
           <p>
-            Individuals born in the {start}s share a unique historical perspective. Growing up during this 
-            era meant witnessing significant developments that shaped the modern world. Whether you were 
-            born at the beginning or the end of the decade, your cohort represents a vital part of our global community.
+            {decadeInfo.context}
+          </p>
+          <p>
+            <strong>Generation:</strong> People born during this decade typically belong to {decadeInfo.generation}. 
+            Growing up during this era meant witnessing significant developments that shaped the modern world. 
+            Whether you were born at the beginning or the end of the decade, your cohort represents a vital part of our global community.
           </p>
           <p>
             Our specialized year pages within this decade provide tailored content including:
@@ -118,7 +130,7 @@ export default async function Page({ params }: { params: { year: string } }) {
         </div>
 
         <footer style={{ padding: '2rem 1rem', borderTop: '1px solid #e5e7eb', textAlign: 'center', color: '#6b7280', fontSize: '0.875rem' }}>
-          <p>© {new Date().getFullYear()} Age Calculator — Decade Hub Strategy</p>
+          <p>© {new Date().getFullYear()} Age Calculator — Free Online Tool</p>
           <p style={{ marginTop: '0.75rem' }}>
             <Link href="/privacy" style={{ color: '#00ADB5', marginRight: '1.5rem', fontWeight: 500, textDecoration: 'none' }}>Privacy Policy</Link>
             <Link href="/terms" style={{ color: '#00ADB5', fontWeight: 500, textDecoration: 'none' }}>Terms of Use</Link>
